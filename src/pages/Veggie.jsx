@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 import { fetchVeggiesById } from "../functions/fetchVeggiesById";
 import getArticle from "../functions/getArticle";
 import isObjectEmpty from "../functions/isObjectEmpty";
@@ -70,6 +71,7 @@ function Veggie() {
           <article>{veggieToShow?.badDescription}</article>
         </>
       )}
+      <Link to="/">Home</Link>
     </>
   );
 }

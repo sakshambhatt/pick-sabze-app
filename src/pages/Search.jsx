@@ -6,6 +6,7 @@ import { searchVeggies } from "../functions/searchVeggies";
 
 function Search() {
   const [veggieToSearch, setVeggieToSearch] = useState("");
+  const [wasVeggieFound, setWasVeggieFound] = useState(true);
 
   const { isSuccess, isLoading, isError, data, error, refetch } = useQuery(
     "searchedVeggies",
@@ -25,6 +26,8 @@ function Search() {
   useEffect(() => {
     if (isSuccess && message === "veggie found!") {
       navigate(`/veggies/${veggieId}`);
+    } else if (message?.charAt(0) === "n") {
+      setWasVeggieFound(() => false);
     }
   }, [isSuccess, message, navigate, veggieId]);
 
@@ -54,6 +57,9 @@ function Search() {
           Search
         </button>
       </form>
+      {!wasVeggieFound && (
+        <p>Sadly, the veggie you searched for was not found.</p>
+      )}
       <section>
         <Link to="/categories">
           <small>Learn about your veggies</small>
