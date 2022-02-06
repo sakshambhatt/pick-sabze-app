@@ -12,7 +12,6 @@ function Categories() {
   );
 
   const [categories, setCategories] = useState([]);
-  console.log(categories);
 
   useEffect(() => {
     if (isSuccess) {

@@ -7,7 +7,7 @@ import VeggieCard from "../components/VeggieCard";
 function Category() {
   const categoryId = window.location.href.split("s/")[1];
   const [veggies, setVeggies] = useState([]);
-  console.log(veggies);
+
   const { isSuccess, isLoading, isError, data, error } = useQuery(
     "fetchedVeggies",
     () => fetchVeggiesByCategoryId(categoryId),
